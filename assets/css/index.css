@@ -1,0 +1,100 @@
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(120deg, #e0eafc 0%, #cfdef3 100%);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container {
+    background-color: #fff;
+    padding: 32px 24px;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(44, 62, 80, 0.15);
+    width: 100%;
+    max-width: 420px;
+    animation: fadeIn 0.7s;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+h1 {
+    text-align: center;
+    color: #2d3436;
+    margin-bottom: 24px;
+}
+label {
+    font-weight: 500;
+    margin-bottom: 6px;
+    display: block;
+    color: #636e72;
+}
+input[type="text"],
+input[type="number"],
+textarea,
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 14px;
+    border: 1px solid #dfe6e9;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 15px;
+    background: #f9f9f9;
+    transition: border-color 0.2s;
+}
+input:focus, textarea:focus {
+    border-color: #0984e3;
+    outline: none;
+}
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+button[type="submit"] {
+    background: linear-gradient(90deg, #0984e3 0%, #00b894 100%);
+    color: white;
+    padding: 12px 0;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: 600;
+    width: 100%;
+    box-shadow: 0 2px 8px rgba(44, 62, 80, 0.07);
+    transition: background 0.2s;
+}
+button[type="submit"]:hover {
+    background: linear-gradient(90deg, #00b894 0%, #0984e3 100%);
+}
+.alert {
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 18px;
+    text-align: center;
+    font-weight: 500;
+}
+.alert.success {
+    background: #dff9fb;
+    color: #00b894;
+    border: 1px solid #00b894;
+}
+.alert.error {
+    background: #ffe6e6;
+    color: #d63031;
+    border: 1px solid #d63031;
+}
+.preview {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 14px;
+}
+.preview img {
+    max-width: 180px;
+    max-height: 180px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(44, 62, 80, 0.09);
+}

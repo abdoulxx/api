@@ -1,0 +1,47 @@
+Projet d’intégration de l’API PayTech
+1. Introduction
+Contexte du projet
+L’objectif de ce projet est de mettre en place un système de paiement en ligne en intégrant l’API PayTech dans une application web développée en PHP. Cette intégration permet à un utilisateur de sélectionner un article, de procéder au paiement via la passerelle sécurisée de PayTech, et de recevoir automatiquement une confirmation grâce au système de notifications IPN.
+Objectif de l’intégration
+L’objectif principal est de simplifier et sécuriser les paiements en ligne. L’intégration de l’API PayTech garantit une redirection sécurisée et une confirmation fiable des transactions.
+2. Présentation de l’API PayTech
+Fonctionnalités principales
+PayTech permet d’effectuer des paiements via cartes bancaires et portefeuilles mobiles (Orange Money, Free Money, Wave, etc.). Elle offre un suivi des transactions, un système de notification IPN et une sécurité basée sur HMAC-SHA256.
+Mode de fonctionnement (redirection + IPN)
+1. L’application envoie une requête POST /payment/request-payment avec les détails de la commande.
+2. PayTech renvoie une URL de redirection vers la page de paiement.
+3. Après paiement, PayTech notifie le serveur via IPN pour confirmer l’état de la transaction.
+3. Étapes d’implémentation
+Préparation de l’environnement (PHP, Composer, Base de données)
+Installation de PHP 8+, Composer et MySQL. Mise en place du projet PHP/Laravel et création d’une base de données ecommerce avec deux tables : articles et commandes.
+Configuration des clés API et variables d’environnement
+Création d’un fichier .env contenant les variables PAYTECH_API_KEY, PAYTECH_API_SECRET et PAYTECH_ENV. Ces clés sont chargées dans le code pour sécuriser l’application.
+Création de la table des articles et des commandes
+Deux tables principales sont utilisées :
+- articles : pour stocker les produits disponibles.
+- commandes : pour suivre les transactions avec statut (PENDING, PAID, CANCELED).
+Mise en place du script de création de paiement (create_payment.php)
+Le script récupère l’article choisi, génère une référence unique, enregistre la commande en statut PENDING, puis envoie une requête POST à PayTech. La réponse contient une redirect_url qui redirige l’utilisateur vers la page de paiement.
+Redirection vers la page de paiement PayTech
+L’utilisateur est dirigé vers l’interface PayTech pour choisir son mode de paiement (carte bancaire, mobile money, etc.).
+Gestion du retour utilisateur (success / cancel)
+Après paiement, l’utilisateur est redirigé vers la success_url ou la cancel_url. Ces pages affichent un message correspondant au résultat du paiement.
+Mise en place de l’IPN (webhook) pour valider la commande
+Le serveur reçoit une notification PayTech contenant les informations de la transaction. Le système vérifie la signature HMAC-SHA256 et met à jour le statut de la commande dans la base de données.
+4. Tests de fonctionnement
+Paiement réussi (sale_complete)
+Un test en mode sandbox montre que la commande passe de PENDING à PAID après réception de l’IPN.
+Paiement annulé (sale_canceled)
+Un test de paiement annulé entraîne le passage du statut de la commande à CANCELED.
+Vérification dans la base de données
+Les champs status, paid_at et canceled_at sont correctement mis à jour dans la base de données.
+5. Résultats et observations
+Captures d’écran (checkout, success, DB)
+Des captures d’écran illustrent la redirection vers la page PayTech, la confirmation de succès et l’état des commandes dans la base de données.
+Difficultés rencontrées et solutions
+Les principales difficultés ont concerné la gestion des clés API, la configuration de l’IPN et la vérification HMAC. Ces problèmes ont été résolus en utilisant des variables d’environnement, des logs et des tests répétés en mode sandbox.
+6. Conclusion
+Bilan du projet
+L’intégration de l’API PayTech a permis de mettre en place un système de paiement en ligne sécurisé et fiable. Les transactions sont correctement enregistrées et validées.
+Améliorations possibles
+Parmi les perspectives d’évolution : ajout d’autres API (Intech), intégration mobile, et renforcement de la sécurité avec des frameworks comme Laravel ou Symfony.
