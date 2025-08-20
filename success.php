@@ -26,7 +26,7 @@
         <h1>Paiement Réussi !</h1>
         <p>Votre commande a été traitée avec succès.</p>
         <p>Vous pouvez vérifier le statut dans votre espace client.</p>
-        <a href="article.php" class="acheter-btn" style="display: inline-block; text-decoration: none; padding: 12px 25px; margin-top: 20px;">Retour aux articles</a>
+        <a href="article.php" class="acheter-btn" style="display: inline-block; text-decoration: none; padding: 12px 25px; margin-top: 20px; width: auto;">Retour aux articles</a>
     </div>
 </body>
 </html>

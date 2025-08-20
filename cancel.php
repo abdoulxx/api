@@ -44,7 +44,7 @@ if (isset($_GET['ref_command'])) {
         <h1>Paiement Annulé</h1>
         <p>Le processus de paiement a été annulé.</p>
         <p>Votre commande n'a pas été finalisée. Vous ne serez pas débité.</p>
-        <a href="article.php" class="acheter-btn" style="display: inline-block; text-decoration: none; padding: 12px 25px; margin-top: 20px;">Retour aux articles</a>
+        <a href="article.php" class="acheter-btn" style="display: inline-block; text-decoration: none; padding: 12px 25px; margin-top: 20px; width: auto;">Retour aux articles</a>
     </div>
 </body>
 </html>

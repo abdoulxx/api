@@ -69,9 +69,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         "ref_command"   => $ref_command, // On utilise notre référence unique.
         "command_name"  => "Achat de " . $article['nom'],
         "env"           => "test", // Environnement de test.
-        "success_url"   => "https://ca114ab3c8d0.ngrok-free.app/api/success.php", 
-        "ipn_url"       => "https://ca114ab3c8d0.ngrok-free.app/api/ipn.php",       
-        "cancel_url"    => "https://ca114ab3c8d0.ngrok-free.app/api/cancel.php?ref_command=" . $ref_command,
+        "success_url"   => "https://fb18d7c4387d.ngrok-free.app/api/success.php", 
+        "ipn_url"       => "https://fb18d7c4387d.ngrok-free.app/api/ipn.php",       
+        "cancel_url"    => "https://fb18d7c4387d.ngrok-free.app/api/cancel.php?ref_command=" . $ref_command,
     ];
 
     // --- Étape 6: Envoi de la requête à PayTech ---
